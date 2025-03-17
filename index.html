@@ -1,0 +1,285 @@
+<?php
+session_start();
+?>
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Datang - Aplikasi Tanggung Jawab Mahasiswa</title>
+
+    <!-- Link Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- SweetAlert2 CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script> <!-- Font Awesome Icons -->
+
+    <style>
+        /* Background Image with gradient overlay */
+        .background-image {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            height: 100vh;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        /* Header Styles */
+        .header-title {
+            font-size: 3.8rem;
+            font-weight: 700;
+            line-height: 1.3;
+            text-transform: uppercase;
+        }
+
+        .header-description {
+            font-size: 1.25rem;
+            line-height: 1.8;
+            margin-top: 20px;
+            margin-bottom: 40px;
+        }
+
+        /* Custom Card Styles */
+        .feature-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-icon {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+
+        .feature-text {
+            font-size: 1.1rem;
+            line-height: 1.5;
+        }
+
+        /* Custom Button Color */
+        .btn-outline-custom {
+            border: 2px solid #ffffff;
+            color: #ffffff;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .btn-outline-custom:hover {
+            background-color: #ffffff;
+            color: #000000;
+        }
+
+        /* Custom Color Scheme */
+        .card-bg-blue { background-color: #0077b6; }
+        .card-bg-green { background-color: #4CAF50; }
+        .card-bg-yellow { background-color: #ffb703; }
+        .card-bg-purple { background-color: #6a4c93; }
+        .card-bg-indigo { background-color: #1c6bff; }
+        .card-bg-red { background-color: #e63946; }
+
+        /* Custom Colors for Text and Borders */
+        .text-primary-custom { color: #0077b6; }
+        .text-success-custom { color: #4CAF50; }
+        .text-warning-custom { color: #ffb703; }
+        .text-info-custom { color: #1c6bff; }
+        .text-danger-custom { color: #e63946; }
+
+        /* Developer Section Styles */
+        .developer-image {
+            border-radius: 50%;
+            max-width: 150px;
+            margin-top: 30px;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .developer-info {
+            margin-top: 20px;
+            color: #000000;
+        }
+
+        /* Smooth Scroll Effect */
+        html {
+            scroll-behavior: smooth;
+        }
+
+    </style>
+</head>
+<body class="text-white">
+
+<!-- Navbar with username display -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="index.php">Aplikasi Mahasiswa</a>
+        <div class="d-flex">
+            <?php if (isset($_SESSION['user_id'])): ?>
+                <span class="navbar-text">
+                    Selamat datang, <?php echo $_SESSION['username']; ?>
+                </span>
+                <a href="logout.php" class="btn btn-outline-danger ms-3">Logout</a>
+            <?php else: ?>
+                <a href="login.php" class="btn btn-outline-primary">Login</a>
+                <a href="register.php" class="btn btn-outline-secondary ms-2">Register</a>
+            <?php endif; ?>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<div class="background-image">
+    <div class="container py-5 px-4">
+        <h1 class="header-title animate__animated animate__fadeIn">Aplikasi Tanggung Jawab Mahasiswa</h1>
+        <p class="header-description animate__animated animate__fadeIn animate__delay-1s">
+            Solusi lengkap untuk mahasiswa yang ingin mengelola jadwal kuliah, tugas, alarm, catatan, dan banyak lagi dalam satu aplikasi yang sederhana dan efektif.
+            Aplikasi ini memberikan kontrol penuh atas kehidupan akademik Anda.
+        </p>
+
+        <!-- Login and Register Buttons -->
+        <?php if (!isset($_SESSION['user_id'])): ?>
+            <div class="d-flex justify-content-center gap-3">
+                <a href="login.php" class="btn btn-outline-custom btn-lg px-4 py-2">Login</a>
+                <a href="register.php" class="btn btn-outline-custom btn-lg px-4 py-2">Register</a>
+            </div>
+        <?php endif; ?>
+    </div>
+</div>
+
+<!-- Features Section -->
+<div class="container py-5">
+    <h2 class="text-center text-primary mb-5 section-title">Fitur Unggulan</h2>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+
+        <!-- Atur Jadwal Kuliah -->
+        <div class="col">
+            <div class="card feature-card shadow-lg border-0 rounded-3 p-4 card-bg-blue">
+                <div class="card-body text-center">
+                    <div class="card-icon text-white">
+                        <i class="bi bi-calendar-check"></i>
+                    </div>
+                    <h5 class="card-title mb-3">Atur Jadwal Kuliah</h5>
+                    <p class="feature-text">Kelola jadwal kuliah Anda dengan mudah dan efisien.</p>
+                    <button class="btn btn-outline-custom mt-3" onclick="checkLoginStatus('atur_jadwal.php')">Atur Jadwal</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chat Otomatis (WA) -->
+        <div class="col">
+            <div class="card feature-card shadow-lg border-0 rounded-3 p-4 card-bg-green">
+                <div class="card-body text-center">
+                    <div class="card-icon text-white">
+                        <i class="bi bi-chat-dots"></i>
+                    </div>
+                    <h5 class="card-title mb-3">Chat Otomatis (WA)</h5>
+                    <p class="feature-text">Chat langsung dengan dosen menggunakan WhatsApp otomatis.</p>
+                    <button class="btn btn-outline-custom mt-3" onclick="checkLoginStatus('https://wa.me/nomor_telp_dosen?text=Halo%20Pak/Bu%20[Dosen]%20saya%20ingin%20bertanya%20tentang%20[judul%20topik]')">Mulai Chat</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Atur Alarm Bangun Tidur -->
+        <div class="col">
+            <div class="card feature-card shadow-lg border-0 rounded-3 p-4 card-bg-yellow">
+                <div class="card-body text-center">
+                    <div class="card-icon text-white">
+                        <i class="bi bi-alarm"></i>
+                    </div>
+                    <h5 class="card-title mb-3">Atur Alarm Bangun Tidur</h5>
+                    <p class="feature-text">Setel alarm otomatis sesuai dengan jadwal kuliah Anda.</p>
+                    <button class="btn btn-outline-custom mt-3" onclick="checkLoginStatus('atur_alarm.php')">Atur Alarm</button>
+                </div>
+            </div>
+        </div>
+        <!-- Atur Jadwal Belajar -->
+        <div class="col">
+                <div class="card feature-card shadow-lg border-0 rounded-3 p-4 card-bg-purple">
+                    <div class="card-body text-center">
+                        <div class="card-icon text-white">
+                            <i class="bi bi-book"></i>
+                        </div>
+                        <h5 class="card-title mb-3">Atur Jadwal Belajar</h5>
+                        <p class="feature-text">Rencanakan dan atur waktu belajar Anda dengan mudah.</p>
+                        <button class="btn btn-outline-custom mt-3" onclick="checkLoginStatus('set_study_schedule.php')">Atur Belajar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Catatan Interaktif -->
+            <div class="col">
+                <div class="card feature-card shadow-lg border-0 rounded-3 p-4 card-bg-indigo">
+                    <div class="card-body text-center">
+                        <div class="card-icon text-white">
+                            <i class="bi bi-file-earmark-text"></i>
+                        </div>
+                        <h5 class="card-title mb-3">Catatan Interaktif</h5>
+                        <p class="feature-text">Buat catatan harian yang dapat diakses dan interaktif.</p>
+                        <button class="btn btn-outline-custom mt-3" onclick="checkLoginStatus('atur_catatan.php')">Buat Catatan</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Task Tugas -->
+            <div class="col">
+                <div class="card feature-card shadow-lg border-0 rounded-3 p-4 card-bg-red">
+                    <div class="card-body text-center">
+                        <div class="card-icon text-white">
+                            <i class="bi bi-check-circle"></i>
+                        </div>
+                        <h5 class="card-title mb-3">Task Tugas</h5>
+                        <p class="feature-text">Kelola tugas Anda dengan mudah dan dapatkan pengingat.</p>
+                        <button class="btn btn-outline-custom mt-3" onclick="checkLoginStatus('add_task.php')">Kelola Tugas</button>
+                    </div>
+                </div>
+            </div>
+
+    </div>
+</div>
+
+<!-- Developer Section -->
+<div class="container text-center py-5">
+    <h2 class="text-primary mb-4">Dibuat oleh</h2>
+    <img src="b.webp" alt="Pembuat Aplikasi" class="developer-image mb-3">
+    <img src="b.webp" alt="Pembuat Aplikasi" class="developer-image mb-3">
+    <img src="b.webp" alt="Pembuat Aplikasi" class="developer-image mb-3">
+    <p class="lead developer-info">Aplikasi ini dikembangkan oleh [Nama Pembuat]. Jika Anda memiliki pertanyaan atau umpan balik, jangan ragu untuk menghubungi saya melalui email atau media sosial!</p>
+</div>
+
+<!-- SweetAlert2 Script -->
+<script>
+    // Check if the user is logged in
+    function checkLoginStatus(redirectUrl) {
+        let isLoggedIn = <?php echo isset($_SESSION['user_id']) ? 'true' : 'false'; ?>;
+
+        if (!isLoggedIn) {
+            Swal.fire({
+                title: 'Login Dulu!',
+                text: 'Anda perlu login untuk mengakses fitur ini.',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Login',
+                cancelButtonText: 'Batal',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = 'login.php'; // Redirect to login page
+                }
+            });
+        } else {
+            window.location.href = redirectUrl; // Redirect to the actual page if logged in
+        }
+    }
+</script>
+
+<!-- Bootstrap 5 JS (Popper.js and Bootstrap's JavaScript plugins) -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+
+</body>
+</html>
