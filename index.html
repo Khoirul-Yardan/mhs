@@ -1,285 +1,691 @@
-<?php
-session_start();
-?>
-
 <!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Selamat Datang - Aplikasi Tanggung Jawab Mahasiswa</title>
+<html>
+  <head>
+    <meta charset="utf-8" />
+   <style>
+    @import url("https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css");
+* {
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0px;
+  height: 100%;
+}
+/* a blue color as a generic focus style */
+button:focus-visible {
+  outline: 2px solid #4a90e2 !important;
+  outline: -webkit-focus-ring-color auto 5px !important;
+}
+a {
+  text-decoration: none;
+}
+.desktop {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
 
-    <!-- Link Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+.desktop .overlap-wrapper {
+  background-color: #ffffff;
+  border: 1px solid;
+  border-color: #eef0e5;
+  width: 1457px;
+  height: 1741px;
+}
 
-    <!-- SweetAlert2 CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+.desktop .overlap {
+  position: relative;
+  height: 1741px;
+}
 
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script> <!-- Font Awesome Icons -->
+.desktop .rectangle {
+  width: 1440px;
+  height: 1024px;
+  top: 0;
+  background-color: #d9d9d9;
+  position: absolute;
+  left: 0;
+}
 
-    <style>
-        /* Background Image with gradient overlay */
-        .background-image {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-            height: 100vh;
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
+.desktop .div {
+  width: 1440px;
+  height: 1024px;
+  top: 0;
+  background-color: #b6c4b6;
+  border: 1px solid;
+  border-color: #eef0e5;
+  box-shadow: 0px 4px 4px #00000040;
+  position: absolute;
+  left: 0;
+}
 
-        /* Header Styles */
-        .header-title {
-            font-size: 3.8rem;
-            font-weight: 700;
-            line-height: 1.3;
-            text-transform: uppercase;
-        }
+.desktop .element {
+  position: absolute;
+  width: 1457px;
+  height: 1741px;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+}
 
-        .header-description {
-            font-size: 1.25rem;
-            line-height: 1.8;
-            margin-top: 20px;
-            margin-bottom: 40px;
-        }
+.desktop .group {
+  position: absolute;
+  width: 329px;
+  height: 94px;
+  top: 1559px;
+  left: 1068px;
+}
 
-        /* Custom Card Styles */
-        .feature-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border-radius: 15px;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
+.desktop .overlap-group {
+  position: relative;
+  width: 325px;
+  height: 94px;
+  background-color: #d9d9d966;
+  border-radius: 17px;
+  border: 1px solid;
+  border-color: #fff7f74c;
+  backdrop-filter: blur(8.5px) brightness(100%);
+  -webkit-backdrop-filter: blur(8.5px) brightness(100%);
+}
 
-        .feature-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
-        }
+.desktop .overlap-2 {
+  position: absolute;
+  width: 216px;
+  height: 79px;
+  top: 13px;
+  left: 104px;
+}
 
-        .card-icon {
-            font-size: 50px;
-            margin-bottom: 20px;
-        }
+.desktop .text-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-family: "ABeeZee-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 40px;
+  letter-spacing: 0;
+  line-height: 49px;
+  white-space: nowrap;
+}
 
-        .feature-text {
-            font-size: 1.1rem;
-            line-height: 1.5;
-        }
+.desktop .p {
+  position: absolute;
+  width: 216px;
+  top: 45px;
+  left: 0;
+  font-family: "FONTSPRING DEMO - Flink Bold-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: 25px;
+}
 
-        /* Custom Button Color */
-        .btn-outline-custom {
-            border: 2px solid #ffffff;
-            color: #ffffff;
-            transition: background-color 0.3s, color 0.3s;
-        }
+.desktop .contacs {
+  position: absolute;
+  width: 68px;
+  height: 68px;
+  top: 12px;
+  left: 16px;
+  object-fit: cover;
+}
 
-        .btn-outline-custom:hover {
-            background-color: #ffffff;
-            color: #000000;
-        }
+.desktop .group-2 {
+  position: absolute;
+  width: 1122px;
+  height: 48px;
+  top: 50px;
+  left: 73px;
+}
 
-        /* Custom Color Scheme */
-        .card-bg-blue { background-color: #0077b6; }
-        .card-bg-green { background-color: #4CAF50; }
-        .card-bg-yellow { background-color: #ffb703; }
-        .card-bg-purple { background-color: #6a4c93; }
-        .card-bg-indigo { background-color: #1c6bff; }
-        .card-bg-red { background-color: #e63946; }
+.desktop .text-wrapper-2 {
+  position: absolute;
+  width: 153px;
+  top: 0;
+  left: 0;
+  font-family: "Inter-Bold", Helvetica;
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 36px;
+  letter-spacing: 0;
+  line-height: normal;
+}
 
-        /* Custom Colors for Text and Borders */
-        .text-primary-custom { color: #0077b6; }
-        .text-success-custom { color: #4CAF50; }
-        .text-warning-custom { color: #ffb703; }
-        .text-info-custom { color: #1c6bff; }
-        .text-danger-custom { color: #e63946; }
+.desktop .group-3 {
+  position: absolute;
+  width: 479px;
+  height: 43px;
+  top: 5px;
+  left: 647px;
+}
 
-        /* Developer Section Styles */
-        .developer-image {
-            border-radius: 50%;
-            max-width: 150px;
-            margin-top: 30px;
-            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
-        }
+.desktop .text-wrapper-3 {
+  width: 84px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  font-family: "Inter-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 30px;
+  letter-spacing: 0;
+  line-height: normal;
+}
 
-        .developer-info {
-            margin-top: 20px;
-            color: #000000;
-        }
+.desktop .text-wrapper-4 {
+  position: absolute;
+  width: 86px;
+  top: 0;
+  left: 179px;
+  font-family: "Inter-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 30px;
+  letter-spacing: 0;
+  line-height: normal;
+}
 
-        /* Smooth Scroll Effect */
-        html {
-            scroll-behavior: smooth;
-        }
+.desktop .text-wrapper-5 {
+  width: 113px;
+  left: 360px;
+  position: absolute;
+  top: 0;
+  font-family: "Inter-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 30px;
+  letter-spacing: 0;
+  line-height: normal;
+}
 
-    </style>
-</head>
-<body class="text-white">
+.desktop .overlap-group-wrapper {
+  position: absolute;
+  width: 168px;
+  height: 60px;
+  top: 37px;
+  left: 1251px;
+}
 
-<!-- Navbar with username display -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="index.php">Aplikasi Mahasiswa</a>
-        <div class="d-flex">
-            <?php if (isset($_SESSION['user_id'])): ?>
-                <span class="navbar-text">
-                    Selamat datang, <?php echo $_SESSION['username']; ?>
-                </span>
-                <a href="logout.php" class="btn btn-outline-danger ms-3">Logout</a>
-            <?php else: ?>
-                <a href="login.php" class="btn btn-outline-primary">Login</a>
-                <a href="register.php" class="btn btn-outline-secondary ms-2">Register</a>
-            <?php endif; ?>
+.desktop .overlap-3 {
+  position: relative;
+  width: 166px;
+  height: 60px;
+  border-radius: 40px;
+}
+
+.desktop .text-wrapper-6 {
+  position: absolute;
+  top: 13px;
+  left: 44px;
+  font-family: "Inter-Bold", Helvetica;
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 28px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.desktop .rectangle-2 {
+  width: 166px;
+  height: 60px;
+  top: 0;
+  border-radius: 40px;
+  border: 1px solid;
+  border-color: #ffffff;
+  position: absolute;
+  left: 0;
+}
+
+.desktop .ninja {
+  position: absolute;
+  top: 337px;
+  left: 73px;
+  font-family: "Inter-Bold", Helvetica;
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 97px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.desktop .text-wrapper-7 {
+  position: absolute;
+  width: 974px;
+  top: 476px;
+  left: 73px;
+  font-family: "ABeeZee-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 32px;
+  letter-spacing: 0;
+  line-height: 49px;
+}
+
+.desktop .img {
+  width: 1457px;
+  height: 247px;
+  top: 777px;
+  position: absolute;
+  left: 0;
+}
+
+.desktop .group-wrapper {
+  position: absolute;
+  width: 1373px;
+  height: 205px;
+  top: 800px;
+  left: 40px;
+}
+
+.desktop .group-4 {
+  position: relative;
+  height: 205px;
+}
+
+.desktop .div-2 {
+  position: absolute;
+  width: 328px;
+  height: 205px;
+  top: 0;
+  left: 0;
+  background-color: #141c2980;
+  border-radius: 22px;
+  border: 1px solid;
+  border-color: #ffffff1a;
+  box-shadow: 13px 22px 33px #00000040;
+  backdrop-filter: blur(8px) brightness(100%);
+  -webkit-backdrop-filter: blur(8px) brightness(100%);
+}
+
+.desktop .group-5 {
+  position: relative;
+  width: 283px;
+  height: 151px;
+  top: 27px;
+  left: 24px;
+}
+
+.desktop .div-wrapper {
+  width: 214px;
+  height: 43px;
+  left: 35px;
+  position: absolute;
+  top: 0;
+}
+
+.desktop .text-wrapper-8 {
+  position: absolute;
+  width: 212px;
+  top: 0;
+  left: 0;
+  font-family: "ADLaM Display-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 29px;
+  letter-spacing: 0;
+  line-height: 49px;
+  white-space: nowrap;
+}
+
+.desktop .kelola-jadwal-kuliah {
+  position: absolute;
+  width: 281px;
+  top: 55px;
+  left: 0;
+  font-family: "ABeeZee-Regular", Helvetica;
+  font-weight: 400;
+  color: #c8c8c8;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: 29px;
+}
+
+.desktop .overlap-4 {
+  position: absolute;
+  width: 676px;
+  height: 205px;
+  top: 0;
+  left: 349px;
+}
+
+.desktop .group-6 {
+  position: absolute;
+  width: 359px;
+  height: 205px;
+  top: 0;
+  left: 0;
+}
+
+.desktop .overlap-group-2 {
+  position: relative;
+  width: 361px;
+  height: 205px;
+}
+
+.desktop .group-7 {
+  position: absolute;
+  width: 337px;
+  height: 169px;
+  top: 25px;
+  left: 24px;
+}
+
+.desktop .group-8 {
+  width: 332px;
+  height: 46px;
+  left: 5px;
+  position: absolute;
+  top: 0;
+}
+
+.desktop .text-wrapper-9 {
+  position: absolute;
+  width: 330px;
+  top: 0;
+  left: 0;
+  font-family: "ADLaM Display-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 28px;
+  letter-spacing: 0;
+  line-height: 49px;
+  white-space: nowrap;
+}
+
+.desktop .text-wrapper-10 {
+  position: absolute;
+  width: 293px;
+  top: 53px;
+  left: 0;
+  font-family: "ABeeZee-Regular", Helvetica;
+  font-weight: 400;
+  color: #c8c8c8;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: 29px;
+}
+
+.desktop .group-9 {
+  position: absolute;
+  width: 328px;
+  height: 205px;
+  top: 0;
+  left: 349px;
+  background-color: #141c2980;
+  border-radius: 22px;
+  border: 1px solid;
+  border-color: #ffffff1a;
+  box-shadow: 13px 22px 33px #00000040;
+  backdrop-filter: blur(8px) brightness(100%);
+  -webkit-backdrop-filter: blur(8px) brightness(100%);
+}
+
+.desktop .group-10 {
+  position: relative;
+  width: 283px;
+  height: 154px;
+  top: 24px;
+  left: 24px;
+}
+
+.desktop .group-11 {
+  width: 194px;
+  height: 46px;
+  left: 83px;
+  position: absolute;
+  top: 0;
+}
+
+.desktop .text-wrapper-11 {
+  position: absolute;
+  width: 192px;
+  top: 0;
+  left: 0;
+  font-family: "ADLaM Display-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 29px;
+  letter-spacing: 0;
+  line-height: 49px;
+  white-space: nowrap;
+}
+
+.desktop .text-wrapper-12 {
+  position: absolute;
+  width: 281px;
+  top: 58px;
+  left: 0;
+  font-family: "ABeeZee-Regular", Helvetica;
+  font-weight: 400;
+  color: #c8c8c8;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: 29px;
+}
+
+.desktop .group-12 {
+  position: absolute;
+  width: 328px;
+  height: 205px;
+  top: 0;
+  left: 1046px;
+  background-color: #141c2980;
+  border-radius: 22px;
+  border: 1px solid;
+  border-color: #ffffff1a;
+  box-shadow: 13px 22px 33px #00000040;
+  backdrop-filter: blur(8px) brightness(100%);
+  -webkit-backdrop-filter: blur(8px) brightness(100%);
+}
+
+.desktop .group-13 {
+  width: 194px;
+  height: 46px;
+  left: 70px;
+  position: absolute;
+  top: 0;
+}
+
+.desktop .card {
+  display: flex;
+  width: 540px;
+  height: 276px;
+  align-items: center;
+  gap: 275px;
+  padding: 0px 60px;
+  position: absolute;
+  top: 1211px;
+  left: 123px;
+  background-color: var(--grey);
+  border-radius: 45px;
+}
+
+.desktop .text-button {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 26px;
+  position: relative;
+  flex: 0 0 auto;
+  margin-right: -80.00px;
+}
+
+.desktop .text-wrapper-13 {
+  position: relative;
+  width: 500px;
+  margin-top: -1.00px;
+  font-family: var(--h-3-font-family);
+  font-weight: var(--h-3-font-weight);
+  color: #000000;
+  font-size: var(--h-3-font-size);
+  letter-spacing: var(--h-3-letter-spacing);
+  line-height: var(--h-3-line-height);
+  font-style: var(--h-3-font-style);
+}
+
+.desktop .text-wrapper-14 {
+  position: relative;
+  width: 500px;
+  font-family: var(--p-font-family);
+  font-weight: var(--p-font-weight);
+  color: #000000;
+  font-size: var(--p-font-size);
+  letter-spacing: var(--p-letter-spacing);
+  line-height: var(--p-line-height);
+  font-style: var(--p-font-style);
+}
+
+.desktop .button {
+  all: unset;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 20px 35px;
+  position: relative;
+  flex: 0 0 auto;
+  background-color: var(--dark);
+  border-radius: 14px;
+}
+
+.desktop .label {
+  position: relative;
+  width: fit-content;
+  margin-top: -1.00px;
+  font-family: "Space Grotesk-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 20px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 28px;
+  white-space: nowrap;
+}
+:root {
+  --dark: rgba(25, 26, 35, 1);
+  --grey: rgba(243, 243, 243, 1);
+  --h-3-font-family: "Space Grotesk", Helvetica;
+  --h-3-font-weight: 500;
+  --h-3-font-size: 30px;
+  --h-3-letter-spacing: 0px;
+  --h-3-line-height: normal;
+  --h-3-font-style: normal;
+  --p-font-family: "Space Grotesk", Helvetica;
+  --p-font-weight: 400;
+  --p-font-size: 18px;
+  --p-letter-spacing: 0px;
+  --p-line-height: normal;
+  --p-font-style: normal;
+}
+
+   </style>
+
+  </head>
+  <body>
+    <div class="desktop">
+      <div class="overlap-wrapper">
+        <div class="overlap">
+          <div class="rectangle"></div>
+          <div class="div"></div>
+          <img class="element" src="123.png" />
+          <div class="group">
+            <div class="overlap-group">
+              <div class="overlap-2">
+                <div class="text-wrapper">Contact</div>
+                <p class="p">Lorem Ipsum is simply dummy</p>
+              </div>
+              <img class="contacs" src="/contacs1.png" />
+            </div>
+          </div>
+          <div class="group-2">
+            <div class="text-wrapper-2">TGMHS</div>
+            <div class="group-3">
+              <div class="text-wrapper-3">Home</div>
+              <div class="text-wrapper-4">About</div>
+              <div class="text-wrapper-5">Contact</div>
+            </div>
+          </div>
+          <a href="login.html"></a>
+          <div class="overlap-group-wrapper">
+            <div class="overlap-3">
+                
+              <div class="text-wrapper-6">Login</div>
+           
+              <div class="rectangle-2"></div>
+            </div>
+          </div>
+        </a>
+          <div class="ninja">TANGJA MHS</div>
+          <p class="text-wrapper-7">
+            Solusi lengkap untuk mahasiswa yang ingin mengelola jadwal kuliah, tugas, alarm, catatan, dan banyak lagi
+            dalam satu aplikasi yang sederhana dan efektif. Aplikasi ini memberikan kontrol penuh atas kehidupan
+            akademik Anda.
+          </p>
+          <div class="overlap-group-wrapper">
+            <div class="overlap-3">
+                <a href="login.html">
+              <div class="text-wrapper-6">Login</div>
+            </a>
+              <div class="rectangle-2"></div>
+            </div>
+          </div>
+          <img class="img" src="/Rectangle4.png" />
+          <div class="group-wrapper">
+            <div class="group-4">
+              <div class="div-2">
+                <div class="group-5">
+                  <div class="div-wrapper"><div class="text-wrapper-8">ATUR JADWAL</div></div>
+                  <p class="kelola-jadwal-kuliah">
+                    Kelola jadwal kuliah Anda dengan mudah dan efisien.<br />Atur Jadwal
+                  </p>
+                </div>
+              </div>
+              <div class="overlap-4">
+                <div class="group-6">
+                  <div class="overlap-group-2">
+                    <div class="div-2"></div>
+                    <div class="group-7">
+                      <div class="group-8"><div class="text-wrapper-9">Chat Otomatis (WA)</div></div>
+                      <p class="text-wrapper-10">Chat langsung dengan dosen menggunakan WhatsApp otomatis.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="group-9">
+                  <div class="group-10">
+                    <div class="group-11"><div class="text-wrapper-11">Catatan</div></div>
+                    <p class="text-wrapper-12">
+                      Buat catatan harian yang dapat diakses dan interaktif.<br />Buat Catatan
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="group-12">
+                <div class="group-10">
+                  <div class="group-13"><div class="text-wrapper-11">Task Tugas</div></div>
+                  <p class="text-wrapper-12">Kelola tugas Anda dengan mudah dan dapatkan pengingat.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="text-button">
+              <div class="text-wrapper-13">Let’s make things happen</div>
+              <p class="text-wrapper-14">
+                Register now to learn more about how our digital services can help you grow and be productive.
+              </p>
+              <a href="login.html">
+              <button class="button"><div class="label">Register now</div></button>
+            </a>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
-</nav>
-
-<!-- Hero Section -->
-<div class="background-image">
-    <div class="container py-5 px-4">
-        <h1 class="header-title animate__animated animate__fadeIn">Aplikasi Tanggung Jawab Mahasiswa</h1>
-        <p class="header-description animate__animated animate__fadeIn animate__delay-1s">
-            Solusi lengkap untuk mahasiswa yang ingin mengelola jadwal kuliah, tugas, alarm, catatan, dan banyak lagi dalam satu aplikasi yang sederhana dan efektif.
-            Aplikasi ini memberikan kontrol penuh atas kehidupan akademik Anda.
-        </p>
-
-        <!-- Login and Register Buttons -->
-        <?php if (!isset($_SESSION['user_id'])): ?>
-            <div class="d-flex justify-content-center gap-3">
-                <a href="login.php" class="btn btn-outline-custom btn-lg px-4 py-2">Login</a>
-                <a href="register.php" class="btn btn-outline-custom btn-lg px-4 py-2">Register</a>
-            </div>
-        <?php endif; ?>
-    </div>
-</div>
-
-<!-- Features Section -->
-<div class="container py-5">
-    <h2 class="text-center text-primary mb-5 section-title">Fitur Unggulan</h2>
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-
-        <!-- Atur Jadwal Kuliah -->
-        <div class="col">
-            <div class="card feature-card shadow-lg border-0 rounded-3 p-4 card-bg-blue">
-                <div class="card-body text-center">
-                    <div class="card-icon text-white">
-                        <i class="bi bi-calendar-check"></i>
-                    </div>
-                    <h5 class="card-title mb-3">Atur Jadwal Kuliah</h5>
-                    <p class="feature-text">Kelola jadwal kuliah Anda dengan mudah dan efisien.</p>
-                    <button class="btn btn-outline-custom mt-3" onclick="checkLoginStatus('atur_jadwal.php')">Atur Jadwal</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Chat Otomatis (WA) -->
-        <div class="col">
-            <div class="card feature-card shadow-lg border-0 rounded-3 p-4 card-bg-green">
-                <div class="card-body text-center">
-                    <div class="card-icon text-white">
-                        <i class="bi bi-chat-dots"></i>
-                    </div>
-                    <h5 class="card-title mb-3">Chat Otomatis (WA)</h5>
-                    <p class="feature-text">Chat langsung dengan dosen menggunakan WhatsApp otomatis.</p>
-                    <button class="btn btn-outline-custom mt-3" onclick="checkLoginStatus('https://wa.me/nomor_telp_dosen?text=Halo%20Pak/Bu%20[Dosen]%20saya%20ingin%20bertanya%20tentang%20[judul%20topik]')">Mulai Chat</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Atur Alarm Bangun Tidur -->
-        <div class="col">
-            <div class="card feature-card shadow-lg border-0 rounded-3 p-4 card-bg-yellow">
-                <div class="card-body text-center">
-                    <div class="card-icon text-white">
-                        <i class="bi bi-alarm"></i>
-                    </div>
-                    <h5 class="card-title mb-3">Atur Alarm Bangun Tidur</h5>
-                    <p class="feature-text">Setel alarm otomatis sesuai dengan jadwal kuliah Anda.</p>
-                    <button class="btn btn-outline-custom mt-3" onclick="checkLoginStatus('atur_alarm.php')">Atur Alarm</button>
-                </div>
-            </div>
-        </div>
-        <!-- Atur Jadwal Belajar -->
-        <div class="col">
-                <div class="card feature-card shadow-lg border-0 rounded-3 p-4 card-bg-purple">
-                    <div class="card-body text-center">
-                        <div class="card-icon text-white">
-                            <i class="bi bi-book"></i>
-                        </div>
-                        <h5 class="card-title mb-3">Atur Jadwal Belajar</h5>
-                        <p class="feature-text">Rencanakan dan atur waktu belajar Anda dengan mudah.</p>
-                        <button class="btn btn-outline-custom mt-3" onclick="checkLoginStatus('set_study_schedule.php')">Atur Belajar</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Catatan Interaktif -->
-            <div class="col">
-                <div class="card feature-card shadow-lg border-0 rounded-3 p-4 card-bg-indigo">
-                    <div class="card-body text-center">
-                        <div class="card-icon text-white">
-                            <i class="bi bi-file-earmark-text"></i>
-                        </div>
-                        <h5 class="card-title mb-3">Catatan Interaktif</h5>
-                        <p class="feature-text">Buat catatan harian yang dapat diakses dan interaktif.</p>
-                        <button class="btn btn-outline-custom mt-3" onclick="checkLoginStatus('atur_catatan.php')">Buat Catatan</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Task Tugas -->
-            <div class="col">
-                <div class="card feature-card shadow-lg border-0 rounded-3 p-4 card-bg-red">
-                    <div class="card-body text-center">
-                        <div class="card-icon text-white">
-                            <i class="bi bi-check-circle"></i>
-                        </div>
-                        <h5 class="card-title mb-3">Task Tugas</h5>
-                        <p class="feature-text">Kelola tugas Anda dengan mudah dan dapatkan pengingat.</p>
-                        <button class="btn btn-outline-custom mt-3" onclick="checkLoginStatus('add_task.php')">Kelola Tugas</button>
-                    </div>
-                </div>
-            </div>
-
-    </div>
-</div>
-
-<!-- Developer Section -->
-<div class="container text-center py-5">
-    <h2 class="text-primary mb-4">Dibuat oleh</h2>
-    <img src="b.webp" alt="Pembuat Aplikasi" class="developer-image mb-3">
-    <img src="b.webp" alt="Pembuat Aplikasi" class="developer-image mb-3">
-    <img src="b.webp" alt="Pembuat Aplikasi" class="developer-image mb-3">
-    <p class="lead developer-info">Aplikasi ini dikembangkan oleh [Nama Pembuat]. Jika Anda memiliki pertanyaan atau umpan balik, jangan ragu untuk menghubungi saya melalui email atau media sosial!</p>
-</div>
-
-<!-- SweetAlert2 Script -->
-<script>
-    // Check if the user is logged in
-    function checkLoginStatus(redirectUrl) {
-        let isLoggedIn = <?php echo isset($_SESSION['user_id']) ? 'true' : 'false'; ?>;
-
-        if (!isLoggedIn) {
-            Swal.fire({
-                title: 'Login Dulu!',
-                text: 'Anda perlu login untuk mengakses fitur ini.',
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonText: 'Login',
-                cancelButtonText: 'Batal',
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    window.location.href = 'login.php'; // Redirect to login page
-                }
-            });
-        } else {
-            window.location.href = redirectUrl; // Redirect to the actual page if logged in
-        }
-    }
-</script>
-
-<!-- Bootstrap 5 JS (Popper.js and Bootstrap's JavaScript plugins) -->
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
-
-</body>
+  </body>
 </html>

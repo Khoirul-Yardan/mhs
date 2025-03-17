@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+   <style>
+    @import url("https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css");
+* {
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0px;
+  height: 100%;
+}
+/* a blue color as a generic focus style */
+button:focus-visible {
+  outline: 2px solid #4a90e2 !important;
+  outline: -webkit-focus-ring-color auto 5px !important;
+}
+a {
+  text-decoration: none;
+}
+.group {
+  background-color: #f5ebc7;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.group .desktop-wrapper {
+  background-color: #f5ebc7;
+  width: 1440px;
+  height: 1024px;
+}
+
+.group .desktop {
+  height: 1024px;
+  background-color: #ffffff;
+  border: 1px solid;
+  border-color: #eef0e5;
+}
+
+.group .overlap {
+  position: relative;
+  width: 1440px;
+  height: 1024px;
+  background-image: url(./img/8989199-4061011.png);
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.group .element {
+  position: absolute;
+  width: 1440px;
+  height: 1024px;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+}
+
+.group .rectangle {
+  position: absolute;
+  width: 94px;
+  height: 1024px;
+  top: 0;
+  left: 0;
+  background-color: #065363;
+  border-radius: 0px 50px 50px 0px;
+  box-shadow: 0px 4px 4px 4px #00000040;
+}
+
+.group .img {
+  position: absolute;
+  width: 76px;
+  height: 84px;
+  top: 88px;
+  left: 8px;
+}
+
+.group .home {
+  position: absolute;
+  width: 84px;
+  height: 60px;
+  top: 227px;
+  left: 5px;
+  background-color: #023039;
+  border-radius: 10px;
+}
+
+.group .image {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: 15px;
+  left: 27px;
+  object-fit: cover;
+}
+
+.group .jadwalkuliah {
+  position: absolute;
+  width: 84px;
+  height: 60px;
+  top: 287px;
+  left: 5px;
+  background-color: #065262;
+  border-radius: 10px;
+}
+
+.group .chatoto {
+  position: absolute;
+  width: 84px;
+  height: 60px;
+  top: 347px;
+  left: 5px;
+  background-color: #065262;
+  border-radius: 10px;
+}
+
+.group .keluar {
+  position: absolute;
+  width: 84px;
+  height: 60px;
+  top: 407px;
+  left: 5px;
+  background-color: #065262;
+  border-radius: 10px;
+}
+
+.group .overlap-wrapper {
+  position: absolute;
+  width: 1327px;
+  height: 295px;
+  top: 10px;
+  left: 104px;
+}
+
+.group .overlap-group {
+  position: relative;
+  width: 1325px;
+  height: 295px;
+  background-color: #0000004c;
+  border-radius: 30px;
+}
+
+.group .text-wrapper {
+  position: absolute;
+  width: 355px;
+  top: 18px;
+  left: 48px;
+  font-family: "Poppins-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 32px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.group .overlap-group-wrapper {
+  position: absolute;
+  width: 324px;
+  height: 180px;
+  top: 109px;
+  left: 9px;
+}
+
+.group .div {
+  position: relative;
+  width: 318px;
+  height: 180px;
+  background-color: #065262;
+  border-radius: 20px;
+}
+
+.group .text-wrapper-2 {
+  position: absolute;
+  width: 112px;
+  top: 39px;
+  left: 103px;
+  font-family: "Poppins-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.group .text-wrapper-3 {
+  position: absolute;
+  width: 170px;
+  top: 125px;
+  left: 74px;
+  font-family: "Poppins-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.group .text-wrapper-4 {
+  position: absolute;
+  width: 92px;
+  top: 95px;
+  left: 113px;
+  font-family: "Poppins-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.group .image-2 {
+  top: 11px;
+  left: 14px;
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  object-fit: cover;
+}
+
+.group .div-wrapper {
+  position: absolute;
+  width: 324px;
+  height: 180px;
+  top: 109px;
+  left: 339px;
+}
+
+.group .text-wrapper-5 {
+  position: absolute;
+  width: 165px;
+  top: 40px;
+  left: 76px;
+  font-family: "Poppins-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.group .text-wrapper-6 {
+  position: absolute;
+  width: 157px;
+  top: 125px;
+  left: 74px;
+  font-family: "Poppins-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.group .text-wrapper-7 {
+  position: absolute;
+  width: 39px;
+  top: 96px;
+  left: 139px;
+  font-family: "Poppins-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.group .image-3 {
+  top: 11px;
+  left: 15px;
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  object-fit: cover;
+}
+
+.group .overlap-wrapper-2 {
+  position: absolute;
+  width: 324px;
+  height: 180px;
+  top: 109px;
+  left: 668px;
+}
+
+.group .text-wrapper-8 {
+  position: absolute;
+  width: 138px;
+  top: 40px;
+  left: 90px;
+  font-family: "Poppins-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.group .text-wrapper-9 {
+  position: absolute;
+  width: 158px;
+  top: 126px;
+  left: 80px;
+  font-family: "Poppins-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.group .text-wrapper-10 {
+  position: absolute;
+  width: 29px;
+  top: 97px;
+  left: 145px;
+  font-family: "Poppins-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.group .image-4 {
+  top: 11px;
+  left: 16px;
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  object-fit: cover;
+}
+
+.group .overlap-wrapper-3 {
+  position: absolute;
+  width: 324px;
+  height: 180px;
+  top: 109px;
+  left: 997px;
+}
+
+.group .text-wrapper-11 {
+  position: absolute;
+  width: 92px;
+  top: 40px;
+  left: 113px;
+  font-family: "Poppins-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.group .text-wrapper-12 {
+  position: absolute;
+  width: 63px;
+  top: 98px;
+  left: 128px;
+  font-family: "Poppins-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.group .image-5 {
+  top: 11px;
+  left: 18px;
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  object-fit: cover;
+}
+
+.group .overlap-wrapper-4 {
+  position: absolute;
+  width: 1327px;
+  height: 643px;
+  top: 368px;
+  left: 104px;
+}
+
+.group .overlap-2 {
+  position: relative;
+  width: 1325px;
+  height: 643px;
+  background-color: #0000004c;
+  border-radius: 30px;
+}
+
+.group .text-wrapper-13 {
+  position: absolute;
+  width: 261px;
+  top: 17px;
+  left: 48px;
+  font-family: "Poppins-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 32px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.group .overlap-group-wrapper-2 {
+  position: absolute;
+  width: 324px;
+  height: 260px;
+  top: 97px;
+  left: 9px;
+}
+
+.group .overlap-group-2 {
+  position: relative;
+  width: 318px;
+  height: 260px;
+  background-color: #065262;
+  border-radius: 20px;
+}
+
+.group .overlap-group-3 {
+  position: absolute;
+  width: 280px;
+  height: 69px;
+  top: 44px;
+  left: 19px;
+  background-color: #0b6c80;
+  border-radius: 20px;
+  box-shadow: 0px 4px 4px #00000040;
+}
+
+.group .belajar-tailwind {
+  width: 150px;
+  top: 20px;
+  left: 65px;
+  position: absolute;
+  font-family: "Poppins-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.group .image-6 {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  top: 6px;
+  left: 13px;
+  object-fit: cover;
+}
+
+.group .keterangan-yang {
+  top: 128px;
+  left: 15px;
+  position: absolute;
+  width: 209px;
+  font-family: "Poppins-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.group .text-wrapper-14 {
+  position: absolute;
+  width: 89px;
+  top: 6px;
+  left: 211px;
+  font-family: "Poppins-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.group .overlap-wrapper-5 {
+  position: absolute;
+  width: 324px;
+  height: 260px;
+  top: 97px;
+  left: 997px;
+}
+
+.group .overlap-group-4 {
+  position: absolute;
+  width: 280px;
+  height: 69px;
+  top: 44px;
+  left: 20px;
+  background-color: #0b6c80;
+  border-radius: 20px;
+  box-shadow: 0px 4px 4px #00000040;
+}
+
+.group .text-wrapper-15 {
+  position: absolute;
+  width: 156px;
+  top: 20px;
+  left: 62px;
+  font-family: "Poppins-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.group .keterangan-yang-2 {
+  position: absolute;
+  width: 209px;
+  top: 128px;
+  left: 19px;
+  font-family: "Poppins-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.group .text-wrapper-16 {
+  top: 6px;
+  left: 209px;
+  position: absolute;
+  width: 89px;
+  font-family: "Poppins-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.group .image-7 {
+  top: 6px;
+  left: 15px;
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  object-fit: cover;
+}
+
+.group .overlap-wrapper-6 {
+  position: absolute;
+  width: 324px;
+  height: 260px;
+  top: 372px;
+  left: 997px;
+}
+
+.group .overlap-group-5 {
+  position: absolute;
+  width: 280px;
+  height: 69px;
+  top: 43px;
+  left: 19px;
+  background-color: #0b6c80;
+  border-radius: 20px;
+  box-shadow: 0px 4px 4px #00000040;
+}
+
+.group .text-wrapper-17 {
+  width: 120px;
+  top: 23px;
+  left: 80px;
+  position: absolute;
+  font-family: "Poppins-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.group .keterangan-yang-3 {
+  top: 126px;
+  left: 17px;
+  position: absolute;
+  width: 209px;
+  font-family: "Poppins-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.group .text-wrapper-18 {
+  top: 11px;
+  left: 209px;
+  position: absolute;
+  width: 89px;
+  font-family: "Poppins-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.group .overlap-wrapper-7 {
+  position: absolute;
+  width: 324px;
+  height: 260px;
+  top: 97px;
+  left: 668px;
+}
+
+.group .text-wrapper-19 {
+  width: 166px;
+  top: 23px;
+  left: 57px;
+  position: absolute;
+  font-family: "Poppins-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.group .image-8 {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  top: 6px;
+  left: 14px;
+  object-fit: cover;
+}
+
+.group .text-wrapper-20 {
+  top: 6px;
+  left: 213px;
+  position: absolute;
+  width: 89px;
+  font-family: "Poppins-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.group .overlap-wrapper-8 {
+  position: absolute;
+  width: 324px;
+  height: 260px;
+  top: 97px;
+  left: 339px;
+}
+
+.group .text-wrapper-21 {
+  width: 153px;
+  left: 63px;
+  position: absolute;
+  top: 23px;
+  font-family: "Poppins-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.group .keterangan-yang-4 {
+  top: 128px;
+  left: 16px;
+  position: absolute;
+  width: 209px;
+  font-family: "Poppins-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.group .text-wrapper-22 {
+  top: 6px;
+  left: 208px;
+  position: absolute;
+  width: 89px;
+  font-family: "Poppins-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.group .image-9 {
+  top: 9px;
+  left: 15px;
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  object-fit: cover;
+}
+
+.group .overlap-wrapper-9 {
+  position: absolute;
+  width: 324px;
+  height: 260px;
+  top: 372px;
+  left: 669px;
+}
+
+.group .text-wrapper-23 {
+  width: 107px;
+  left: 87px;
+  position: absolute;
+  top: 23px;
+  font-family: "Poppins-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.group .keterangan-yang-5 {
+  top: 120px;
+  left: 15px;
+  position: absolute;
+  width: 209px;
+  font-family: "Poppins-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.group .text-wrapper-24 {
+  top: 11px;
+  left: 212px;
+  position: absolute;
+  width: 89px;
+  font-family: "Poppins-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.group .image-10 {
+  top: 7px;
+  left: 12px;
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  object-fit: cover;
+}
+
+.group .overlap-wrapper-10 {
+  position: absolute;
+  width: 324px;
+  height: 260px;
+  top: 372px;
+  left: 339px;
+}
+
+.group .text-wrapper-25 {
+  position: absolute;
+  width: 158px;
+  top: 23px;
+  left: 61px;
+  font-family: "Poppins-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.group .text-wrapper-26 {
+  top: 11px;
+  left: 208px;
+  position: absolute;
+  width: 89px;
+  font-family: "Poppins-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.group .image-11 {
+  top: 10px;
+  left: 16px;
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  object-fit: cover;
+}
+
+.group .overlap-wrapper-11 {
+  position: absolute;
+  width: 324px;
+  height: 260px;
+  top: 372px;
+  left: 9px;
+}
+
+.group .text-wrapper-27 {
+  width: 129px;
+  left: 75px;
+  position: absolute;
+  top: 23px;
+  font-family: "Poppins-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.group .text-wrapper-28 {
+  top: 5px;
+  left: 211px;
+  position: absolute;
+  width: 89px;
+  font-family: "Poppins-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.group .image-12 {
+  top: 10px;
+  left: 13px;
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  object-fit: cover;
+}
+
+   </style>
+  </head>
+  <body>
+    <div class="group">
+      <div class="desktop-wrapper">
+        <div class="desktop">
+          <div class="overlap">
+            <img class="element" src="123.png" />
+            <div class="rectangle"></div>
+            <img class="img" src="Adobe Express - file 1.png" />
+            <div class="home"><img class="image" src="home.png" /></div>
+            <div class="jadwalkuliah"><img class="image" src="image 5.png" /></div>
+            <div class="chatoto"><img class="image" src="chatoto.png" /></div>
+            <div class="keluar"><img class="image" src="keluar.png" /></div>
+            <div class="overlap-wrapper">
+              <div class="overlap-group">
+                <div class="text-wrapper">Mata Kuliah Hari Ini</div>
+                <div class="overlap-group-wrapper">
+                  <div class="div">
+                    <div class="text-wrapper-2">Matematika</div>
+                    <div class="text-wrapper-3">Pukul 08.00 - 09.40</div>
+                    <div class="text-wrapper-4">Agus Joko</div>
+                    <img class="image-2" src="image 5.png" />
+                  </div>
+                </div>
+                <div class="div-wrapper">
+                  <div class="div">
+                    <div class="text-wrapper-5">Bahasa Indonesia</div>
+                    <div class="text-wrapper-6">Pukul 09.40 - 11.20</div>
+                    <div class="text-wrapper-7">Budi</div>
+                    <img class="image-3" src="image 5.png" />
+                  </div>
+                </div>
+                <div class="overlap-wrapper-2">
+                  <div class="div">
+                    <div class="text-wrapper-8">Bahasa Inggris</div>
+                    <div class="text-wrapper-9">Pukul 13.00 - 14.40</div>
+                    <div class="text-wrapper-10">Adi</div>
+                    <img class="image-4" src="image 5.png" />
+                  </div>
+                </div>
+                <div class="overlap-wrapper-3">
+                  <div class="div">
+                    <div class="text-wrapper-11">Algoritma</div>
+                    <div class="text-wrapper-9">Pukul 14.40 - 16.20</div>
+                    <div class="text-wrapper-12">Satriyo</div>
+                    <img class="image-5" src="image 5.png" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="overlap-wrapper-4">
+              <div class="overlap-2">
+                <div class="text-wrapper-13">Jangan Lupa !</div>
+                <div class="overlap-group-wrapper-2">
+                  <div class="overlap-group-2">
+                    <div class="overlap-group-3"><div class="belajar-tailwind">Belajar&nbsp;&nbsp;Tailwind</div></div>
+                    <img class="image-6" src="image 6.png" />
+                    <div class="keterangan-yang">keterangan yang ingin <br />dicantumkan</div>
+                    <div class="text-wrapper-14">2 jam lagi</div>
+                  </div>
+                </div>
+                <div class="overlap-wrapper-5">
+                  <div class="overlap-group-2">
+                    <div class="overlap-group-4"><div class="text-wrapper-15">Belajar MongoDB</div></div>
+                    <div class="keterangan-yang-2">keterangan yang ingin <br />dicantumkan</div>
+                    <div class="text-wrapper-16">2 jam lagi</div>
+                    <img class="image-7" src="image 6.png" />
+                  </div>
+                </div>
+                <div class="overlap-wrapper-6">
+                  <div class="overlap-group-2">
+                    <div class="overlap-group-5"><div class="text-wrapper-17">Belajar UI/UX</div></div>
+                    <div class="keterangan-yang-3">keterangan yang ingin <br />dicantumkan</div>
+                    <div class="text-wrapper-18">2 jam lagi</div>
+                    <img class="image-7" src="image 6.png" />
+                  </div>
+                </div>
+                <div class="overlap-wrapper-7">
+                  <div class="overlap-group-2">
+                    <div class="overlap-group-3"><div class="text-wrapper-19">Belajar Javascript</div></div>
+                    <div class="keterangan-yang-2">keterangan yang ingin <br />dicantumkan</div>
+                    <img class="image-8" src="image 6.png" />
+                    <div class="text-wrapper-20">2 jam lagi</div>
+                  </div>
+                </div>
+                <div class="overlap-wrapper-8">
+                  <div class="overlap-group-2">
+                    <div class="overlap-group-4"><div class="text-wrapper-21">Tugas Algoritma</div></div>
+                    <div class="keterangan-yang-4">keterangan yang ingin <br />dicantumkan</div>
+                    <div class="text-wrapper-22">2 jam lagi</div>
+                    <img class="image-9" src="image 11.png" />
+                  </div>
+                </div>
+                <div class="overlap-wrapper-9">
+                  <div class="overlap-group-2">
+                    <div class="overlap-group-5"><div class="text-wrapper-23">Tugas Java</div></div>
+                    <div class="keterangan-yang-5">keterangan yang ingin <br />dicantumkan</div>
+                    <div class="text-wrapper-24">2 jam lagi</div>
+                    <img class="image-10" src="image 11.png" />
+                  </div>
+                </div>
+                <div class="overlap-wrapper-10">
+                  <div class="overlap-group-2">
+                    <div class="overlap-group-5"><div class="text-wrapper-25">Tugas Basis Data</div></div>
+                    <div class="keterangan-yang-5">keterangan yang ingin <br />dicantumkan</div>
+                    <div class="text-wrapper-26">2 jam lagi</div>
+                    <img class="image-11" src="image 11.png" />
+                  </div>
+                </div>
+                <div class="overlap-wrapper-11">
+                  <div class="overlap-group-2">
+                    <div class="overlap-group-5"><div class="text-wrapper-27">Tugas Agama</div></div>
+                    <div class="keterangan-yang-5">keterangan yang ingin <br />dicantumkan</div>
+                    <div class="text-wrapper-28">2 jam lagi</div>
+                    <img class="image-12" src="image 11.png" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

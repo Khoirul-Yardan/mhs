@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Login Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+</head>
+<body class="bg-cover bg-center h-screen" style="background-image: url('123.png');">
+    <div class="flex items-center justify-center h-full">
+        <div class="bg-teal-800 bg-opacity-90 p-8 rounded-lg flex w-[866px] h-[613px]">
+            <img alt="A floating book in a library with shelves full of books" class="w-1/2 h-full object-cover rounded-l-lg" src="1.png"/>
+            <div class="ml-8 text-white w-1/2 flex flex-col justify-center">
+                <h2 class="text-3xl font-bold mb-6">LOGIN</h2>
+                <form onsubmit="event.preventDefault(); window.location.href='main.html';">
+                    <div class="mb-4">
+                        <label class="block text-sm mb-2" for="email">Email</label>
+                        <input class="w-full p-2 rounded-lg text-black" id="email" placeholder="Email" type="email" required/>
+                    </div>
+                    <div class="mb-4 relative">
+                        <label class="block text-sm mb-2" for="password">Password (optional)</label>
+                        <input class="w-full p-2 rounded-lg text-black" id="password" placeholder="Password" type="password"/>
+                        <i class="fas fa-eye absolute right-3 top-9 text-black cursor-pointer" id="togglePassword"></i>
+                    </div>
+                    <button class="w-full bg-teal-600 p-2 rounded-lg mb-4" type="submit">Masuk</button>
+                    <button class="w-full bg-transparent border border-white p-2 rounded-lg" type="button" onclick="window.location.href='register.html'">Daftar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        const togglePassword = document.getElementById('togglePassword');
+        const passwordInput = document.getElementById('password');
+
+        togglePassword.addEventListener('click', function () {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            this.classList.toggle('fa-eye-slash');
+        });
+    </script>
+</body>
+</html>
